@@ -1,0 +1,414 @@
+:root {
+  font-family: 'Segoe UI', 'Noto Sans', Arial, sans-serif;
+  color: #1f2937;
+  background: linear-gradient(180deg, #f8fafc 0%, #eef2ff 100%);
+  min-height: 100%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+#root {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.app-shell {
+  display: grid;
+  gap: 16px;
+}
+
+.hero {
+  background: white;
+  border: 1px solid #dbeafe;
+  border-radius: 16px;
+  padding: 16px 20px;
+}
+
+.hero h1 {
+  margin: 0 0 8px;
+  font-size: 1.6rem;
+}
+
+.hero p {
+  margin: 0;
+  color: #475569;
+}
+
+.panel {
+  background: white;
+  border: 1px solid #dbeafe;
+  border-radius: 16px;
+  padding: 16px 20px;
+}
+
+.field {
+  display: grid;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.field span {
+  color: #334155;
+  font-size: 0.92rem;
+}
+
+input {
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 0.95rem;
+}
+
+.actions-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+button {
+  border: 1px solid #94a3b8;
+  border-radius: 10px;
+  background: #ffffff;
+  color: #0f172a;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+button.primary {
+  background: #0f766e;
+  border-color: #0f766e;
+  color: #ffffff;
+}
+
+.status {
+  margin: 12px 0 4px;
+  color: #1d4ed8;
+}
+
+.meta {
+  margin: 0;
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+.hidden-input {
+  display: none;
+}
+
+.project-block {
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 6px 10px 8px;
+  margin-top: 10px;
+}
+
+.project-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 2px;
+  border-radius: 6px;
+  cursor: grab;
+  user-select: none;
+  margin-bottom: 4px;
+}
+
+.project-header:hover {
+  background: #f1f5f9;
+}
+
+.project-name {
+  flex: 1;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #1e293b;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.project-count {
+  font-size: 0.78rem;
+  font-weight: 400;
+  color: #64748b;
+  white-space: nowrap;
+}
+
+.btn-remove-project {
+  border: none;
+  background: transparent;
+  color: #94a3b8;
+  padding: 2px 5px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.75rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.btn-remove-project:hover {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.project-block ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 2px;
+}
+
+.project-block li {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 6px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  cursor: grab;
+  user-select: none;
+  font-size: 0.82rem;
+  line-height: 1.4;
+  transition: background 0.1s;
+}
+
+.project-block li:hover {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+}
+
+.project-block li.excluded {
+  opacity: 0.45;
+}
+
+.drag-handle {
+  color: #94a3b8;
+  cursor: grab;
+  font-size: 0.95rem;
+  flex-shrink: 0;
+}
+
+.ext-badge {
+  flex-shrink: 0;
+  font-size: 0.7rem;
+  font-family: Consolas, monospace;
+  background: #e0f2fe;
+  color: #0369a1;
+  border-radius: 4px;
+  padding: 1px 4px;
+  white-space: nowrap;
+}
+
+.file-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #0f172a;
+  font-family: Consolas, monospace;
+  min-width: 0;
+  flex: 1;
+}
+
+/* ─── Gear / icon button ──────────────────────────────────────────── */
+.btn-icon {
+  padding: 8px 10px;
+  font-size: 1.05rem;
+  line-height: 1;
+  border-color: #94a3b8;
+  color: #334155;
+  background: #f8fafc;
+}
+
+.btn-icon:hover:not(:disabled) {
+  background: #e0f2fe;
+  border-color: #0369a1;
+  color: #0369a1;
+}
+
+/* ─── Settings modal ──────────────────────────────────────────────── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.modal {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+  width: 480px;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  padding: 14px 18px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  flex: 1;
+  color: #0f172a;
+}
+
+.modal-close {
+  border: none;
+  background: transparent;
+  font-size: 1.3rem;
+  color: #64748b;
+  padding: 2px 6px;
+  border-radius: 6px;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.modal-close:hover {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.modal-body {
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.modal-desc {
+  margin: 0;
+  font-size: 0.84rem;
+  color: #475569;
+  line-height: 1.5;
+}
+
+.modal-footer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 18px;
+  border-top: 1px solid #e2e8f0;
+  background: #f8fafc;
+  border-radius: 0 0 16px 16px;
+}
+
+.modal-footer-spacer {
+  flex: 1;
+}
+
+.btn-ghost {
+  border: 1px solid #cbd5e1;
+  background: transparent;
+  color: #475569;
+  font-size: 0.85rem;
+}
+
+.btn-ghost:hover:not(:disabled) {
+  background: #f1f5f9;
+}
+
+/* ─── Extension tags (used inside modal) ─────────────────────────── */
+.ext-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.ext-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: Consolas, monospace;
+  font-size: 0.75rem;
+  background: #e0f2fe;
+  color: #0369a1;
+  border: 1px solid #bae6fd;
+  border-radius: 6px;
+  padding: 2px 6px 2px 8px;
+  white-space: nowrap;
+}
+
+.ext-remove {
+  border: none;
+  background: transparent;
+  color: #64748b;
+  padding: 0;
+  font-size: 0.85rem;
+  line-height: 1;
+  border-radius: 4px;
+  cursor: pointer;
+  min-width: 14px;
+}
+
+.ext-remove:hover:not(:disabled) {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.ext-remove:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.ext-add-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.ext-input {
+  width: 110px;
+  padding: 6px 10px;
+  font-size: 0.88rem;
+  border-radius: 8px;
+  font-family: Consolas, monospace;
+}
+
+.ext-error {
+  margin: 0;
+  font-size: 0.82rem;
+  color: #dc2626;
+}
+
+@media (max-width: 700px) {
+  #root {
+    padding: 12px;
+  }
+
+  .hero h1 {
+    font-size: 1.3rem;
+  }
+
+  .actions-row {
+    flex-direction: column;
+  }
+
+  .actions-row button {
+    width: 100%;
+  }
+}
