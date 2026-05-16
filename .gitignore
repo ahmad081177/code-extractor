@@ -37,8 +37,8 @@ next-env.d.ts
 
 
 
-_bmad
-.github
+_bmad/
+.github/agents/
 # Dependencies
 /node_modules
 
